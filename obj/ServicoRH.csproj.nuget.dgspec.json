@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fernandamgg\\Desktop\\Estudos\\ServicoRH\\ServicoRH.csproj": {}
+    "C:\\Workspace\\servicoRH\\ServicoRH.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fernandamgg\\Desktop\\Estudos\\ServicoRH\\ServicoRH.csproj": {
+    "C:\\Workspace\\servicoRH\\ServicoRH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fernandamgg\\Desktop\\Estudos\\ServicoRH\\ServicoRH.csproj",
+        "projectUniqueName": "C:\\Workspace\\servicoRH\\ServicoRH.csproj",
         "projectName": "ServicoRH",
-        "projectPath": "C:\\Users\\fernandamgg\\Desktop\\Estudos\\ServicoRH\\ServicoRH.csproj",
-        "packagesPath": "C:\\Users\\fernandamgg\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fernandamgg\\Desktop\\Estudos\\ServicoRH\\obj\\",
+        "projectPath": "C:\\Workspace\\servicoRH\\ServicoRH.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Workspace\\servicoRH\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\fernandamgg\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
