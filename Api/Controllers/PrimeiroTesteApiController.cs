@@ -12,5 +12,13 @@ namespace ServicoRH.Api.Controllers
         {
             return valor1 + valor2;
         }
+
+        [HttpGet]
+        [Route("Multiplicar")]
+        public double RealizarMultiplicacao(double valor1, double valor2)
+        {
+            return valor1 * valor2;
+        }
+
     }
 }
