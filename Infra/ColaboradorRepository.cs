@@ -13,27 +13,32 @@ namespace ServicoRH.Infra
 
         public Colaborador BuscarColaboradorPorCpf(string cpf)
         {
+
+            Colaborador colaboradorResult = new Colaborador();
+
+            //abrindo conexao com banco
             MySqlConnection sqlConnection = _mySqlConnection.AbrirConexaoSQL();
 
+            //criando comando sql
             MySqlCommand cmd = new MySqlCommand("select * from rh.colaborador where cpf = @cpf", sqlConnection);
-
             cmd.Parameters.AddWithValue("@cpf", cpf);
 
+            //executando comando sql no banco
             MySqlDataReader sdr = cmd.ExecuteReader();
 
-            Colaborador colaborador = new Colaborador();
-
+            //preenchendo o valor retornando no objeto de resposta
             while (sdr.Read())
             {
-                colaborador.IdColaborador = Convert.ToInt32(sdr["idcolaborador"].ToString());
-                colaborador.Nome = sdr["nome"].ToString();
-                colaborador.Cpf = sdr["cpf"].ToString();
-                colaborador.DataNascimento = new DateTime();
-                colaborador.DataAdmissao = new DateTime();
-                colaborador.Salario = Convert.ToDouble(sdr["salario"].ToString());
+                colaboradorResult.IdColaborador = Convert.ToInt32(sdr["idcolaborador"].ToString());
+                colaboradorResult.Nome = sdr["nome"].ToString();
+                colaboradorResult.Cpf = sdr["cpf"].ToString();
+                colaboradorResult.DataNascimento = new DateTime();
+                colaboradorResult.DataAdmissao = new DateTime();
+                colaboradorResult.Salario = Convert.ToDouble(sdr["salario"].ToString());
             }
 
-            return colaborador;
+            //retornando objeto completo
+            return colaboradorResult;
         }
 
     }
