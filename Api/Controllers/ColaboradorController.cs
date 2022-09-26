@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServicoRH.Application.UseCases;
+using ServicoRH.Domain;
 
 namespace ServicoRH.Api.Controllers
 {
@@ -8,10 +9,12 @@ namespace ServicoRH.Api.Controllers
     public class ColaboradorController
     {
         private readonly RetornarSalarioPorCpfUseCase _retornarSalarioPorCpfUseCase;
+        private readonly RetornarDadosDoColaboradorUseCase _retornarDadosDoColaboradorUseCase;
 
         public ColaboradorController()
         {
             _retornarSalarioPorCpfUseCase = new RetornarSalarioPorCpfUseCase();
+            _retornarDadosDoColaboradorUseCase = new RetornarDadosDoColaboradorUseCase();
         }
 
         [HttpGet]
@@ -21,5 +24,11 @@ namespace ServicoRH.Api.Controllers
             return _retornarSalarioPorCpfUseCase.obterSalarioPorCpf(cpf);
         }
 
+        [HttpGet]
+        [Route("BuscarDadosColaborador")]
+        public Colaborador BuscarDadosColaborador(string cpf)
+        {
+            return _retornarDadosDoColaboradorUseCase.ObterDadosDoColaborador(cpf);
+        }
     }
 }
