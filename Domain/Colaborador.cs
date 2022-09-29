@@ -8,5 +8,7 @@
         public double Salario { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataAdmissao { get; set; }
+        public string Cargo { get; set; }
+        public string Squad { get; set; }
     }
 }

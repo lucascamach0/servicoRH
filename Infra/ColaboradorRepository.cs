@@ -13,7 +13,7 @@ namespace ServicoRH.Infra
 
         public Colaborador BuscarColaboradorPorCpf(string cpf)
         {
-
+            //criando objeto de retorno
             Colaborador colaboradorResult = new Colaborador();
 
             //abrindo conexao com banco
@@ -40,6 +40,13 @@ namespace ServicoRH.Infra
             //retornando objeto completo
             return colaboradorResult;
         }
+
+        public string BuscarCargoDoColaborador(string cpf)
+        {
+            //implementar dever de casa
+            return null;
+        }
+
 
     }
 }

@@ -30,5 +30,13 @@ namespace ServicoRH.Api.Controllers
         {
             return _retornarDadosDoColaboradorUseCase.ObterDadosDoColaborador(cpf);
         }
+
+        [HttpGet]
+        [Route("BuscarCargoColaborador")]
+        public string BuscarCargoColaborador(string cpf)
+        {
+            //implementar dever de casa
+            return null;
+        }
     }
 }
