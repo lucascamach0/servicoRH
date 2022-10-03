@@ -13,7 +13,8 @@ namespace ServicoRH.Application.UseCases
         public string BuscarCargoDoColaborador(string cpf)
         {
             //implementar dever de casa
-            return null;
+
+            return _colaboradorRepository.BuscarCargoDoColaborador(cpf);
         }
     }
 }

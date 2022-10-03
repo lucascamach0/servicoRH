@@ -1,5 +1,5 @@
-﻿using ServicoRH.Domain;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using ServicoRH.Domain;
 
 namespace ServicoRH.Infra
 {
@@ -44,7 +44,24 @@ namespace ServicoRH.Infra
         public string BuscarCargoDoColaborador(string cpf)
         {
             //implementar dever de casa
-            return null;
+            string resultado = "";
+
+            MySqlConnection sqlConnection = _mySqlConnection.AbrirConexaoSQL();
+
+            MySqlCommand cmd = new MySqlCommand(@"select rh.cargo.nome
+            from rh.colaborador
+            join rh.cargo on rh.cargo.idCargo = rh.colaborador.idCargo
+            where cpf = @cpf ", sqlConnection);
+            cmd.Parameters.AddWithValue("@cpf", cpf);
+
+            MySqlDataReader sdr = cmd.ExecuteReader();
+
+            while (sdr.Read())
+            {
+                resultado = sdr["nome"].ToString();
+            }
+
+            return resultado;
         }
 
 

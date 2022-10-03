@@ -10,11 +10,13 @@ namespace ServicoRH.Api.Controllers
     {
         private readonly RetornarSalarioPorCpfUseCase _retornarSalarioPorCpfUseCase;
         private readonly RetornarDadosDoColaboradorUseCase _retornarDadosDoColaboradorUseCase;
+        private readonly RetornarCargoDoColaboradorUseCase _retornarCargoDoColaboradorUseCase;
 
         public ColaboradorController()
         {
             _retornarSalarioPorCpfUseCase = new RetornarSalarioPorCpfUseCase();
             _retornarDadosDoColaboradorUseCase = new RetornarDadosDoColaboradorUseCase();
+            _retornarCargoDoColaboradorUseCase = new RetornarCargoDoColaboradorUseCase();
         }
 
         [HttpGet]
@@ -36,7 +38,7 @@ namespace ServicoRH.Api.Controllers
         public string BuscarCargoColaborador(string cpf)
         {
             //implementar dever de casa
-            return null;
+            return _retornarCargoDoColaboradorUseCase.BuscarCargoDoColaborador(cpf);
         }
     }
 }
