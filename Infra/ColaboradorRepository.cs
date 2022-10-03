@@ -64,6 +64,27 @@ namespace ServicoRH.Infra
             return resultado;
         }
 
+        public string BuscarSquadPorCpf(string cpf)
+        {
+            string resultado = "";
+
+            MySqlConnection sqlConnection = _mySqlConnection.AbrirConexaoSQL();
+
+            MySqlCommand cmd = new MySqlCommand(@"select rh.squad.nome
+            from rh.colaborador 
+            join rh.squad on rh.squad.idSquad = rh.colaborador.idSquad
+            where cpf = @cpf", sqlConnection);
+            cmd.Parameters.AddWithValue("@cpf", cpf);
+
+            MySqlDataReader sdr = cmd.ExecuteReader();
+
+            while (sdr.Read())
+            {
+                resultado = sdr["nome"].ToString();
+            }
+
+            return resultado;
+        }
 
     }
 }
