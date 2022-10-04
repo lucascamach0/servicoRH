@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServicoRH.Application.UseCases;
 using ServicoRH.Domain;
+using ServicoRH.DTO;
 
 namespace ServicoRH.Api.Controllers
 {
@@ -12,6 +13,8 @@ namespace ServicoRH.Api.Controllers
         private readonly RetornarDadosDoColaboradorUseCase _retornarDadosDoColaboradorUseCase;
         private readonly RetornarCargoDoColaboradorUseCase _retornarCargoDoColaboradorUseCase;
         private readonly RetornarSquadPorCpfUseCase _retornarSquadPorCpfUseCase;
+        private readonly RetonarListaDeColaboradoresPorSquadUseCase _retonarListaDeColaboradoresPorSquadUseCase;
+        private readonly RetornarListaDeColaboradorPorSalarioUseCase _retornarlistaDeColaboradorPorSalarioUseCase;
 
         public ColaboradorController()
         {
@@ -19,6 +22,8 @@ namespace ServicoRH.Api.Controllers
             _retornarDadosDoColaboradorUseCase = new RetornarDadosDoColaboradorUseCase();
             _retornarCargoDoColaboradorUseCase = new RetornarCargoDoColaboradorUseCase();
             _retornarSquadPorCpfUseCase = new RetornarSquadPorCpfUseCase();
+            _retonarListaDeColaboradoresPorSquadUseCase = new RetonarListaDeColaboradoresPorSquadUseCase();
+            _retornarlistaDeColaboradorPorSalarioUseCase = new RetornarListaDeColaboradorPorSalarioUseCase();
         }
 
         [HttpGet]
@@ -48,6 +53,20 @@ namespace ServicoRH.Api.Controllers
         public string BuscarSquadColaborador(string cpf)
         {
             return _retornarSquadPorCpfUseCase.BuscarSquadPorCpf(cpf);
+        }
+
+        [HttpGet]
+        [Route("BuscarColaboradorPorSquad")]
+        public List<ColaboradorDTO> BuscarlistaDeColaboradores(string squad)
+        {
+            return _retonarListaDeColaboradoresPorSquadUseCase.ObterTodosOsDadosDoColaboradorPorSquad(squad);
+        }
+
+        [HttpGet]
+        [Route("BuscarColaboradorPorSalario")]
+        public List<SalarioDTO> BuscarlistaDeColaboradores(double salario)
+        {
+            return _retornarlistaDeColaboradorPorSalarioUseCase.ObterListaDeColaboradorPorSalario(salario);
         }
     }
 }
