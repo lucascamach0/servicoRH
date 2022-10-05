@@ -37,5 +37,29 @@ namespace ServicoRH.Infra
             return listDeSquads;
         }
 
+        public string InserirSquad(string nomeSquad)
+        {
+            try
+            {
+                //abrindo conexao com banco
+                MySqlConnection sqlConnection = _mySqlConnection.AbrirConexaoSQL();
+
+                //criando comando sql
+                MySqlCommand cmd = new MySqlCommand("insert into rh.squad (nome) values (@squad);", sqlConnection);
+                cmd.Parameters.AddWithValue("@squad", nomeSquad);
+
+                //executando comando sql no banco
+                MySqlDataReader sdr = cmd.ExecuteReader();
+
+                return "Squad inserida com sucesso!";
+            }
+            catch (Exception excepetion)
+            {
+
+                return "Erro ao inserir squad" + excepetion.ToString();
+            }
+            
+        }
+
     }
 }

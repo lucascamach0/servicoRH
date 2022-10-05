@@ -9,9 +9,11 @@ namespace ServicoRH.Api.Controllers
     public class SquadController
     {
         private readonly RetornarListaDeSquadsUseCase _retornarListaDeSquadsUseCase;
+        private readonly InserirSquadUseCase _inserirSquadUseCase;
         public SquadController()
         {
             _retornarListaDeSquadsUseCase = new RetornarListaDeSquadsUseCase();
+            _inserirSquadUseCase = new InserirSquadUseCase();
         }
 
         [HttpGet]
@@ -19,6 +21,13 @@ namespace ServicoRH.Api.Controllers
         public List<SquadDTO> BuscarListaDeSquads()
         {
             return _retornarListaDeSquadsUseCase.ObterListaDeSquads();
+        }
+
+        [HttpPost]
+        [Route("InserirSquad")]
+        public string InserirSquad([FromBody] string nomeSquad)
+        {
+            return _inserirSquadUseCase.InserirSquad(nomeSquad);
         }
 
     }
