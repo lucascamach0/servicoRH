@@ -36,5 +36,28 @@ namespace ServicoRH.Infra
 
             return listDeCargos;
         }
+
+        public string InserirCargo(string nomeCargo)
+        {
+            try
+            {
+                //abrindo conexao com banco
+                MySqlConnection sqlConnection = _mySqlConnection.AbrirConexaoSQL();
+
+                //criando comando sql
+                MySqlCommand cmd = new MySqlCommand("insert into rh.cargo (nome) values (@Cargo);", sqlConnection);
+                cmd.Parameters.AddWithValue("@Cargo", nomeCargo);
+
+                //executando comando sql no banco
+                MySqlDataReader sdr = cmd.ExecuteReader();
+
+                return "Cargo inserido com sucesso!";
+            }
+            catch (Exception excepetion)
+            {
+
+                return "Erro ao inserir cargo" + excepetion.ToString();
+            }
+        }
     }
 }

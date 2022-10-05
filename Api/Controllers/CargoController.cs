@@ -9,10 +9,12 @@ namespace ServicoRH.Api.Controllers
     public class CargoController
     {
         private readonly RetornarListaDeCargosUseCase _retornarListaDeCargosUseCase;
+        private readonly InserirCargoUseCase _inserirCargoUseCase;
 
         public CargoController()
         {
             _retornarListaDeCargosUseCase = new RetornarListaDeCargosUseCase();
+            _inserirCargoUseCase = new InserirCargoUseCase();
         }
 
         [HttpGet]
@@ -20,6 +22,13 @@ namespace ServicoRH.Api.Controllers
         public List<Cargo> BuscarListaDeCargos()
         {
             return _retornarListaDeCargosUseCase.ObterListaDeCargos();
+        }
+
+        [HttpPost]
+        [Route("InserirCargo")]
+        public string InserirCargo([FromBody] string nomeCargo)
+        {
+            return _inserirCargoUseCase.InserirCargo(nomeCargo);
         }
     }
 }
