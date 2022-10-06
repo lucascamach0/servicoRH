@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ServicoRH.Domain;
+using ServicoRH.DTO;
 
 namespace ServicoRH.Infra
 {
@@ -154,6 +155,37 @@ namespace ServicoRH.Infra
             }
 
             return listaDeColaboradores;
+        }
+
+        public string InserirColaborador(InserirColaboradorDTO colaborador)
+        {
+            try
+            {
+                //abrindo conexao com banco
+                MySqlConnection sqlConnection = _mySqlConnection.AbrirConexaoSQL();
+
+                //criando comando sql
+                MySqlCommand cmd = new MySqlCommand("insert into rh.colaborador(cpf,nome,datanascimento,salario,dataadmissao,idCargo,idSquad) values(@cpf, @nome, @datanascimento,@salario,@dataadmissao,@idCargo,@idSquad);", sqlConnection);
+                cmd.Parameters.AddWithValue("@cpf", colaborador.Cpf);
+                cmd.Parameters.AddWithValue("@nome", colaborador.Nome);
+                cmd.Parameters.AddWithValue("@datanascimento", colaborador.DataNascimento);
+                cmd.Parameters.AddWithValue("@salario", colaborador.Salario);
+                cmd.Parameters.AddWithValue("@dataadmissao", colaborador.DataAdmissao);
+                cmd.Parameters.AddWithValue("@idCargo", colaborador.Cargo);
+                cmd.Parameters.AddWithValue("@idSquad", colaborador.Squad);
+
+                //executando comando sql no banco
+                MySqlDataReader sdr = cmd.ExecuteReader();
+
+                return "Colaborador inserido com sucesso";
+            }
+            catch (Exception excepetion)
+            {
+
+                return "Erro ao inserir o colaborador" + excepetion.ToString();
+            }
+
+
         }
 
     }

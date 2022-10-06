@@ -15,6 +15,7 @@ namespace ServicoRH.Api.Controllers
         private readonly RetornarSquadPorCpfUseCase _retornarSquadPorCpfUseCase;
         private readonly RetonarListaDeColaboradoresPorSquadUseCase _retonarListaDeColaboradoresPorSquadUseCase;
         private readonly RetornarListaDeColaboradorPorSalarioUseCase _retornarlistaDeColaboradorPorSalarioUseCase;
+        private readonly InserirColaboradorUseCase _inserirColaboradorUseCase;
 
         public ColaboradorController()
         {
@@ -24,6 +25,7 @@ namespace ServicoRH.Api.Controllers
             _retornarSquadPorCpfUseCase = new RetornarSquadPorCpfUseCase();
             _retonarListaDeColaboradoresPorSquadUseCase = new RetonarListaDeColaboradoresPorSquadUseCase();
             _retornarlistaDeColaboradorPorSalarioUseCase = new RetornarListaDeColaboradorPorSalarioUseCase();
+            _inserirColaboradorUseCase = new InserirColaboradorUseCase();
         }
 
         [HttpGet]
@@ -67,6 +69,13 @@ namespace ServicoRH.Api.Controllers
         public List<SalarioDTO> BuscarlistaDeColaboradores(double salario)
         {
             return _retornarlistaDeColaboradorPorSalarioUseCase.ObterListaDeColaboradorPorSalario(salario);
+        }
+
+        [HttpPost]
+        [Route("InserirColaborador")]
+        public string InserirColaborador([FromBody] InserirColaboradorDTO colaborador)
+        {
+            return _inserirColaboradorUseCase.InserirColaborador(colaborador);
         }
     }
 }
