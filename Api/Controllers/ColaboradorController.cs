@@ -16,6 +16,8 @@ namespace ServicoRH.Api.Controllers
         private readonly RetonarListaDeColaboradoresPorSquadUseCase _retonarListaDeColaboradoresPorSquadUseCase;
         private readonly RetornarListaDeColaboradorPorSalarioUseCase _retornarlistaDeColaboradorPorSalarioUseCase;
         private readonly InserirColaboradorUseCase _inserirColaboradorUseCase;
+        private readonly AlterarSalarioColaboradorUseCase _alterarSalarioColaboradorUseCase;
+        private readonly DeletarColaboradorUseCase _deletarColaboradorUseCase;
 
         public ColaboradorController()
         {
@@ -26,6 +28,8 @@ namespace ServicoRH.Api.Controllers
             _retonarListaDeColaboradoresPorSquadUseCase = new RetonarListaDeColaboradoresPorSquadUseCase();
             _retornarlistaDeColaboradorPorSalarioUseCase = new RetornarListaDeColaboradorPorSalarioUseCase();
             _inserirColaboradorUseCase = new InserirColaboradorUseCase();
+            _alterarSalarioColaboradorUseCase = new AlterarSalarioColaboradorUseCase();
+            _deletarColaboradorUseCase = new DeletarColaboradorUseCase();
         }
 
         [HttpGet]
@@ -76,6 +80,20 @@ namespace ServicoRH.Api.Controllers
         public string InserirColaborador([FromBody] InserirColaboradorDTO colaborador)
         {
             return _inserirColaboradorUseCase.InserirColaborador(colaborador);
+        }
+
+        [HttpPost]
+        [Route("AlterarSalarioColaborador")]
+        public string AlterarSalarioColaborador([FromBody] AlterarSalarioColaboradorDTO colaborador)
+        {
+            return _alterarSalarioColaboradorUseCase.AlterarSalario(colaborador);
+        }
+
+        [HttpPost]
+        [Route("DeletarColaborador")]
+        public string DeletarColaborador([FromBody] string cpf)
+        {
+            return _deletarColaboradorUseCase.ExcluirColaborador(cpf);
         }
     }
 }

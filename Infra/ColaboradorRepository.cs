@@ -188,5 +188,53 @@ namespace ServicoRH.Infra
 
         }
 
+        public string AlterarSalarioColaborador(AlterarSalarioColaboradorDTO colaborador)
+        {
+            try
+            {
+                MySqlConnection sqlConnection = _mySqlConnection.AbrirConexaoSQL();
+
+                MySqlCommand cmd = new MySqlCommand(@"update rh.colaborador
+                set salario = @salario
+                where cpf = @cpf", sqlConnection);
+
+                cmd.Parameters.AddWithValue("@cpf", colaborador.Cpf);
+                cmd.Parameters.AddWithValue("@salario", colaborador.Salario);
+
+                MySqlDataReader sdr = cmd.ExecuteReader();
+
+
+                return "Alteração realizada com sucesso";
+
+            }
+            catch (Exception excepetion)
+            {
+
+                return "Erro ao realizar alteração" + excepetion.ToString();
+            }
+        }
+
+        public string DeletarColaborador(string cpf)
+        {
+            try
+            {
+                MySqlConnection sqlConnection = _mySqlConnection.AbrirConexaoSQL();
+
+                MySqlCommand cmd = new MySqlCommand(@"DELETE FROM rh.colaborador WHERE cpf = @cpf", sqlConnection);
+
+                cmd.Parameters.AddWithValue("@cpf", cpf);
+
+                MySqlDataReader sdr = cmd.ExecuteReader();
+
+                return "Colaborador excluído com sucesso";
+
+            }
+            catch (Exception excepetion)
+            {
+
+                return "Erro ao realizar exclusão" + excepetion.ToString();
+            }
+        }
+
     }
 }
