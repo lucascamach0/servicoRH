@@ -1,9 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using ServicoRH.Domain;
+using ServicoRH.Infra.Interface;
 
 namespace ServicoRH.Infra
 {
-    public class SquadRepository
+    public class SquadRepository : ISquadRepository
     {
         private readonly MySqlData _mySqlConnection;
         public SquadRepository()

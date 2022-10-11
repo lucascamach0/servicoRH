@@ -1,15 +1,18 @@
-﻿using ServicoRH.Domain;
+﻿using ServicoRH.Application.UseCases.Interfaces;
+using ServicoRH.Domain;
 using ServicoRH.DTO;
 using ServicoRH.Infra;
+using ServicoRH.Infra.Interface;
 
 namespace ServicoRH.Application.UseCases
 {
-    public class RetornarListaDeSquadsUseCase
+    public class RetornarListaDeSquadsUseCase : IRetornarListaDeSquadsUseCase
     {
-        private readonly SquadRepository _squadRepository;
-        public RetornarListaDeSquadsUseCase()
+        private readonly ISquadRepository _squadRepository;
+
+        public RetornarListaDeSquadsUseCase(ISquadRepository squadRepository)
         {
-            _squadRepository = new SquadRepository();
+           _squadRepository = squadRepository;
         }
 
         public List<SquadDTO> ObterListaDeSquads()

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServicoRH.Application.UseCases;
+using ServicoRH.Application.UseCases.Interfaces;
 using ServicoRH.DTO;
 
 namespace ServicoRH.Api.Controllers
@@ -8,12 +9,15 @@ namespace ServicoRH.Api.Controllers
     [Route("squad")]
     public class SquadController
     {
-        private readonly RetornarListaDeSquadsUseCase _retornarListaDeSquadsUseCase;
-        private readonly InserirSquadUseCase _inserirSquadUseCase;
-        public SquadController()
+        private readonly IRetornarListaDeSquadsUseCase _retornarListaDeSquadsUseCase;
+        private readonly IInserirSquadUseCase _inserirSquadUseCase;
+
+        public SquadController(IRetornarListaDeSquadsUseCase retornarListaDeSquadsUseCase,
+                                IInserirSquadUseCase inserirSquadUseCase)
         {
-            _retornarListaDeSquadsUseCase = new RetornarListaDeSquadsUseCase();
-            _inserirSquadUseCase = new InserirSquadUseCase();
+            _retornarListaDeSquadsUseCase = retornarListaDeSquadsUseCase;
+            _inserirSquadUseCase = inserirSquadUseCase;
+
         }
 
         [HttpGet]

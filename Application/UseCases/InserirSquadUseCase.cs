@@ -1,13 +1,15 @@
-﻿using ServicoRH.Infra;
+﻿using ServicoRH.Application.UseCases.Interfaces;
+using ServicoRH.Infra;
+using ServicoRH.Infra.Interface;
 
 namespace ServicoRH.Application.UseCases
 {
-    public class InserirSquadUseCase
+    public class InserirSquadUseCase : IInserirSquadUseCase
     {
-        private readonly SquadRepository _squadRepository;
-        public InserirSquadUseCase()
+        private readonly ISquadRepository _squadRepository;
+        public InserirSquadUseCase(ISquadRepository squadRepository)
         {
-            _squadRepository = new SquadRepository();
+            _squadRepository = squadRepository;
         }
 
         public string InserirSquad(string nomeSquad)
