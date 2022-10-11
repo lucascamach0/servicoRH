@@ -18,6 +18,15 @@ namespace ServicoRH.DI
             services.AddScoped<IRetornarListaDeSquadsUseCase, RetornarListaDeSquadsUseCase>();
             services.AddScoped<IRetornarSquadPorCpfUseCase, RetornarSquadPorCpfUseCase>();
             services.AddScoped<IInserirSquadUseCase, InserirSquadUseCase>();
+            services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
+            services.AddScoped<IRetornarDadosDoColaboradorUseCase, RetornarDadosDoColaboradorUseCase>();
+            services.AddScoped<IRetornarCargoDoColaboradorUseCase, RetornarCargoDoColaboradorUseCase>();
+            services.AddScoped<IRetonarListaDeColaboradoresPorSquadUseCase, RetonarListaDeColaboradoresPorSquadUseCase>();
+            services.AddScoped<IRetornarListaDeColaboradorPorSalarioUseCase, RetornarListaDeColaboradorPorSalarioUseCase>();
+            services.AddScoped<IInserirColaboradorUseCase, InserirColaboradorUseCase>();
+            services.AddScoped<IAlterarSalarioColaboradorUseCase, AlterarSalarioColaboradorUseCase>();
+            services.AddScoped<IDeletarColaboradorUseCase, DeletarColaboradorUseCase>();
+            services.AddScoped<IRetornarSalarioPorCpfUseCase, RetornarSalarioPorCpfUseCase>();
         }
     }
 }

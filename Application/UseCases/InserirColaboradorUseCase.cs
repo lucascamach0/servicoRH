@@ -1,9 +1,10 @@
-﻿using ServicoRH.DTO;
+﻿using ServicoRH.Application.UseCases.Interfaces;
+using ServicoRH.DTO;
 using ServicoRH.Infra;
 
 namespace ServicoRH.Application.UseCases
 {
-    public class InserirColaboradorUseCase
+    public class InserirColaboradorUseCase : IInserirColaboradorUseCase
     {
         private readonly ColaboradorRepository _colaboradorRepository;
         public InserirColaboradorUseCase()

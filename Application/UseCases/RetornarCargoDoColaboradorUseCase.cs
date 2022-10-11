@@ -1,8 +1,9 @@
-﻿using ServicoRH.Infra;
+﻿using ServicoRH.Application.UseCases.Interfaces;
+using ServicoRH.Infra;
 
 namespace ServicoRH.Application.UseCases
 {
-    public class RetornarCargoDoColaboradorUseCase
+    public class RetornarCargoDoColaboradorUseCase : IRetornarCargoDoColaboradorUseCase
     {
         private readonly ColaboradorRepository _colaboradorRepository;
         public RetornarCargoDoColaboradorUseCase()

@@ -1,9 +1,10 @@
-﻿using ServicoRH.Domain;
+﻿using ServicoRH.Application.UseCases.Interfaces;
+using ServicoRH.Domain;
 using ServicoRH.Infra;
 
 namespace ServicoRH.Application.UseCases
 {
-    public class RetornarListaDeColaboradorPorSalarioUseCase
+    public class RetornarListaDeColaboradorPorSalarioUseCase : IRetornarListaDeColaboradorPorSalarioUseCase
     {
         private readonly ColaboradorRepository _colaboradorRepository;
         public RetornarListaDeColaboradorPorSalarioUseCase()

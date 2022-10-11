@@ -1,10 +1,11 @@
-﻿using ServicoRH.Domain;
+﻿using ServicoRH.Application.UseCases.Interfaces;
+using ServicoRH.Domain;
 using ServicoRH.DTO;
 using ServicoRH.Infra;
 
 namespace ServicoRH.Application.UseCases
 {
-    public class AlterarSalarioColaboradorUseCase
+    public class AlterarSalarioColaboradorUseCase : IAlterarSalarioColaboradorUseCase
     {
         private readonly ColaboradorRepository _colaboradorRepository;
         private readonly RetornarDadosDoColaboradorUseCase _retornarDadosDoColaboradorUseCase;

@@ -1,10 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using ServicoRH.Domain;
 using ServicoRH.DTO;
+using ServicoRH.Infra.Interface;
 
 namespace ServicoRH.Infra
 {
-    public class ColaboradorRepository
+    public class ColaboradorRepository : IColaboradorRepository
     {
         private readonly MySqlData _mySqlConnection;
         public ColaboradorRepository()

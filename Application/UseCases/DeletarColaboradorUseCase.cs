@@ -1,9 +1,10 @@
-﻿using ServicoRH.Domain;
+﻿using ServicoRH.Application.UseCases.Interfaces;
+using ServicoRH.Domain;
 using ServicoRH.Infra;
 
 namespace ServicoRH.Application.UseCases
 {
-    public class DeletarColaboradorUseCase
+    public class DeletarColaboradorUseCase : IDeletarColaboradorUseCase
     {
         private readonly ColaboradorRepository _colaboradorRepository;
         private readonly RetornarDadosDoColaboradorUseCase _retornarDadosDoColaboradorUseCase;
