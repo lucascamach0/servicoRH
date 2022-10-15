@@ -1,18 +1,19 @@
 ﻿using ServicoRH.Application.UseCases.Interfaces;
 using ServicoRH.Domain;
-using ServicoRH.Infra;
+using ServicoRH.Infra.Interface;
 
 namespace ServicoRH.Application.UseCases
 {
     public class DeletarColaboradorUseCase : IDeletarColaboradorUseCase
     {
-        private readonly ColaboradorRepository _colaboradorRepository;
-        private readonly RetornarDadosDoColaboradorUseCase _retornarDadosDoColaboradorUseCase;
+        private readonly IColaboradorRepository _colaboradorRepository;
+        private readonly IRetornarDadosDoColaboradorUseCase _retornarDadosDoColaboradorUseCase;
 
-        public DeletarColaboradorUseCase()
+        public DeletarColaboradorUseCase(IColaboradorRepository colaboradorRepository,
+            IRetornarDadosDoColaboradorUseCase retornarDadosDoColaboradorUseCase)
         {
-            _colaboradorRepository = new ColaboradorRepository();
-            _retornarDadosDoColaboradorUseCase = new RetornarDadosDoColaboradorUseCase();
+            _colaboradorRepository = colaboradorRepository;
+            _retornarDadosDoColaboradorUseCase = retornarDadosDoColaboradorUseCase;
         }
         public string ExcluirColaborador(string cpf)
         {

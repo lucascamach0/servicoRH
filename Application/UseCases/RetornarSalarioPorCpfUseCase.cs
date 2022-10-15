@@ -1,15 +1,15 @@
 ﻿using ServicoRH.Application.UseCases.Interfaces;
 using ServicoRH.Domain;
-using ServicoRH.Infra;
+using ServicoRH.Infra.Interface;
 
 namespace ServicoRH.Application.UseCases
 {
     public class RetornarSalarioPorCpfUseCase : IRetornarSalarioPorCpfUseCase
     {
-        private readonly ColaboradorRepository _colaboradorRepository;
-        public RetornarSalarioPorCpfUseCase()
+        private readonly IColaboradorRepository _colaboradorRepository;
+        public RetornarSalarioPorCpfUseCase(IColaboradorRepository colaboradorRepository)
         {
-            _colaboradorRepository = new ColaboradorRepository();
+            _colaboradorRepository = colaboradorRepository;
         }
         public double obterSalarioPorCpf(string cpf)
         {

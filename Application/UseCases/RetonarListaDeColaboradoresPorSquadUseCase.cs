@@ -1,16 +1,16 @@
 ﻿using ServicoRH.Application.UseCases.Interfaces;
 using ServicoRH.Domain;
 using ServicoRH.DTO;
-using ServicoRH.Infra;
+using ServicoRH.Infra.Interface;
 
 namespace ServicoRH.Application.UseCases
 {
     public class RetonarListaDeColaboradoresPorSquadUseCase : IRetonarListaDeColaboradoresPorSquadUseCase
     {
-        private readonly ColaboradorRepository _colaboradorRepository;
-        public RetonarListaDeColaboradoresPorSquadUseCase()
+        private readonly IColaboradorRepository _colaboradorRepository;
+        public RetonarListaDeColaboradoresPorSquadUseCase(IColaboradorRepository colaboradorRepository)
         {
-            _colaboradorRepository = new ColaboradorRepository();
+            _colaboradorRepository = colaboradorRepository;
         }
 
         public List<ColaboradorDTO> ObterTodosOsDadosDoColaboradorPorSquad(string squad)

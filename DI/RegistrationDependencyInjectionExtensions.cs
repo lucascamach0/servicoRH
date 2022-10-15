@@ -27,6 +27,7 @@ namespace ServicoRH.DI
             services.AddScoped<IAlterarSalarioColaboradorUseCase, AlterarSalarioColaboradorUseCase>();
             services.AddScoped<IDeletarColaboradorUseCase, DeletarColaboradorUseCase>();
             services.AddScoped<IRetornarSalarioPorCpfUseCase, RetornarSalarioPorCpfUseCase>();
+            services.AddScoped<IAlterarSquadUseCase, AlterarSquadUseCase>();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ServicoRH.Application.UseCases;
+using ServicoRH.Application.UseCases.Interfaces;
 using ServicoRH.Domain;
 using ServicoRH.DTO;
 
@@ -9,27 +9,35 @@ namespace ServicoRH.Api.Controllers
     [Route("Colaborador")]
     public class ColaboradorController
     {
-        private readonly RetornarSalarioPorCpfUseCase _retornarSalarioPorCpfUseCase;
-        private readonly RetornarDadosDoColaboradorUseCase _retornarDadosDoColaboradorUseCase;
-        private readonly RetornarCargoDoColaboradorUseCase _retornarCargoDoColaboradorUseCase;
-        private readonly RetornarSquadPorCpfUseCase _retornarSquadPorCpfUseCase;
-        private readonly RetonarListaDeColaboradoresPorSquadUseCase _retonarListaDeColaboradoresPorSquadUseCase;
-        private readonly RetornarListaDeColaboradorPorSalarioUseCase _retornarlistaDeColaboradorPorSalarioUseCase;
-        private readonly InserirColaboradorUseCase _inserirColaboradorUseCase;
-        private readonly AlterarSalarioColaboradorUseCase _alterarSalarioColaboradorUseCase;
-        private readonly DeletarColaboradorUseCase _deletarColaboradorUseCase;
+        private readonly IRetornarSalarioPorCpfUseCase _retornarSalarioPorCpfUseCase;
+        private readonly IRetornarDadosDoColaboradorUseCase _retornarDadosDoColaboradorUseCase;
+        private readonly IRetornarCargoDoColaboradorUseCase _retornarCargoDoColaboradorUseCase;
+        private readonly IRetornarSquadPorCpfUseCase _retornarSquadPorCpfUseCase;
+        private readonly IRetonarListaDeColaboradoresPorSquadUseCase _retonarListaDeColaboradoresPorSquadUseCase;
+        private readonly IRetornarListaDeColaboradorPorSalarioUseCase _retornarlistaDeColaboradorPorSalarioUseCase;
+        private readonly IInserirColaboradorUseCase _inserirColaboradorUseCase;
+        private readonly IAlterarSalarioColaboradorUseCase _alterarSalarioColaboradorUseCase;
+        private readonly IDeletarColaboradorUseCase _deletarColaboradorUseCase;
 
-        public ColaboradorController()
+        public ColaboradorController(IDeletarColaboradorUseCase deletarColaboradorUseCase,
+            IRetornarDadosDoColaboradorUseCase retornarDadosDoColaboradorUseCase,
+            IRetornarCargoDoColaboradorUseCase retornarCargoDoColaboradorUseCase,
+            IRetornarSquadPorCpfUseCase retornarSquadPorCpfUseCase,
+            IRetonarListaDeColaboradoresPorSquadUseCase retonarListaDeColaboradoresPorSquadUseCase,
+            IRetornarListaDeColaboradorPorSalarioUseCase retornarListaDeColaboradorPorSalarioUseCase,
+            IInserirColaboradorUseCase inserirColaboradorUseCase,
+            IAlterarSalarioColaboradorUseCase alterarSalarioColaboradorUseCase,
+            IRetornarSalarioPorCpfUseCase retornarSalarioPorCpfUseCase)
         {
-            _retornarSalarioPorCpfUseCase = new RetornarSalarioPorCpfUseCase();
-            _retornarDadosDoColaboradorUseCase = new RetornarDadosDoColaboradorUseCase();
-            _retornarCargoDoColaboradorUseCase = new RetornarCargoDoColaboradorUseCase();
-            _retornarSquadPorCpfUseCase = new RetornarSquadPorCpfUseCase();
-            _retonarListaDeColaboradoresPorSquadUseCase = new RetonarListaDeColaboradoresPorSquadUseCase();
-            _retornarlistaDeColaboradorPorSalarioUseCase = new RetornarListaDeColaboradorPorSalarioUseCase();
-            _inserirColaboradorUseCase = new InserirColaboradorUseCase();
-            _alterarSalarioColaboradorUseCase = new AlterarSalarioColaboradorUseCase();
-            _deletarColaboradorUseCase = new DeletarColaboradorUseCase();
+            _retornarSalarioPorCpfUseCase = retornarSalarioPorCpfUseCase;
+            _retornarDadosDoColaboradorUseCase = retornarDadosDoColaboradorUseCase;
+            _retornarCargoDoColaboradorUseCase = retornarCargoDoColaboradorUseCase;
+            _retornarSquadPorCpfUseCase = retornarSquadPorCpfUseCase;
+            _retonarListaDeColaboradoresPorSquadUseCase = retonarListaDeColaboradoresPorSquadUseCase;
+            _retornarlistaDeColaboradorPorSalarioUseCase = retornarListaDeColaboradorPorSalarioUseCase;
+            _inserirColaboradorUseCase = inserirColaboradorUseCase;
+            _alterarSalarioColaboradorUseCase = alterarSalarioColaboradorUseCase;
+            _deletarColaboradorUseCase = deletarColaboradorUseCase;
         }
 
         [HttpGet]

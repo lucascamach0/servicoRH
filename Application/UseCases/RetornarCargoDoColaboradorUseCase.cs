@@ -1,14 +1,14 @@
 ﻿using ServicoRH.Application.UseCases.Interfaces;
-using ServicoRH.Infra;
+using ServicoRH.Infra.Interface;
 
 namespace ServicoRH.Application.UseCases
 {
     public class RetornarCargoDoColaboradorUseCase : IRetornarCargoDoColaboradorUseCase
     {
-        private readonly ColaboradorRepository _colaboradorRepository;
-        public RetornarCargoDoColaboradorUseCase()
+        private readonly IColaboradorRepository _colaboradorRepository;
+        public RetornarCargoDoColaboradorUseCase(IColaboradorRepository colaboradorRepository)
         {
-            _colaboradorRepository = new ColaboradorRepository();
+            _colaboradorRepository = colaboradorRepository;
         }
 
         public string BuscarCargoDoColaborador(string cpf)

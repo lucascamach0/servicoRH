@@ -1,4 +1,5 @@
 ﻿using ServicoRH.Domain;
+using ServicoRH.DTO;
 
 namespace ServicoRH.Infra.Interface
 {
@@ -6,5 +7,6 @@ namespace ServicoRH.Infra.Interface
     {
         List<Squad> ObterTodosAsSquads();
         string InserirSquad(string nomeSquad);
+        string AlterarSquad(AlterarSquadDTO colaborador);
     }
 }

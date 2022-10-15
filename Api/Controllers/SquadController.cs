@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ServicoRH.Application.UseCases;
 using ServicoRH.Application.UseCases.Interfaces;
 using ServicoRH.DTO;
 
@@ -11,13 +10,15 @@ namespace ServicoRH.Api.Controllers
     {
         private readonly IRetornarListaDeSquadsUseCase _retornarListaDeSquadsUseCase;
         private readonly IInserirSquadUseCase _inserirSquadUseCase;
+        private readonly IAlterarSquadUseCase _alterarSquadUseCase;
 
         public SquadController(IRetornarListaDeSquadsUseCase retornarListaDeSquadsUseCase,
-                                IInserirSquadUseCase inserirSquadUseCase)
+                                IInserirSquadUseCase inserirSquadUseCase,
+                                IAlterarSquadUseCase alterarSquadUseCase)
         {
             _retornarListaDeSquadsUseCase = retornarListaDeSquadsUseCase;
             _inserirSquadUseCase = inserirSquadUseCase;
-
+            _alterarSquadUseCase = alterarSquadUseCase;
         }
 
         [HttpGet]
@@ -34,5 +35,11 @@ namespace ServicoRH.Api.Controllers
             return _inserirSquadUseCase.InserirSquad(nomeSquad);
         }
 
+        [HttpPost]
+        [Route("AlterarSquad")]
+        public string AlterarSquad([FromBody] AlterarSquadDTO colaborador)
+        {
+            return _alterarSquadUseCase.AlterarSquad(colaborador);
+        }
     }
 }

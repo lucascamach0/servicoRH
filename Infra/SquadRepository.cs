@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ServicoRH.Domain;
+using ServicoRH.DTO;
 using ServicoRH.Infra.Interface;
 
 namespace ServicoRH.Infra
@@ -59,7 +60,32 @@ namespace ServicoRH.Infra
 
                 return "Erro ao inserir squad" + excepetion.ToString();
             }
-            
+
+        }
+
+        public string AlterarSquad(AlterarSquadDTO colaborador)
+        {
+            try
+            {
+                MySqlConnection sqlConnection = _mySqlConnection.AbrirConexaoSQL();
+
+                MySqlCommand cmd = new MySqlCommand(@"update rh.colaborador
+                set idSquad = @Squad
+                where cpf = @cpf", sqlConnection);
+
+                cmd.Parameters.AddWithValue("@cpf", colaborador.Cpf);
+                cmd.Parameters.AddWithValue("@Squad", colaborador.IdSquad);
+
+                MySqlDataReader sdr = cmd.ExecuteReader();
+
+                return "Alteração realizada com sucesso";
+
+            }
+            catch (Exception excepetion)
+            {
+
+                return "Erro ao realizar alteração" + excepetion.ToString();
+            }
         }
 
     }
