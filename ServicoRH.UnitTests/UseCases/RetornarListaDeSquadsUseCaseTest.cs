@@ -18,8 +18,12 @@ namespace ServicoRH.UnitTests.UseCases
             Squad squad = new Squad();
             squad.Nome = "Unificar";
             ListaDeSquads.Add(squad);
+            //setup é o metodo de simulação do mock
+            // expressão lâmbida que vai simular o método do repository
+            // returns que vai fazer a simulação do retorno e passa o retorno que eu quero simular
             _repositoryMock.Setup(a => a.ObterTodosAsSquads()).Returns(ListaDeSquads);
-
+            //instancia do usecase real
+            //object é um atributo que fala que é um mock
             RetornarListaDeSquadsUseCase useCase = new RetornarListaDeSquadsUseCase(_repositoryMock.Object);
 
             //Action
