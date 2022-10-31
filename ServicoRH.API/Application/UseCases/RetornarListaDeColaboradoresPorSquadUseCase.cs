@@ -5,10 +5,10 @@ using ServicoRH.Infra.Interface;
 
 namespace ServicoRH.Application.UseCases
 {
-    public class RetonarListaDeColaboradoresPorSquadUseCase : IRetonarListaDeColaboradoresPorSquadUseCase
+    public class RetornarListaDeColaboradoresPorSquadUseCase : IRetonarListaDeColaboradoresPorSquadUseCase
     {
         private readonly IColaboradorRepository _colaboradorRepository;
-        public RetonarListaDeColaboradoresPorSquadUseCase(IColaboradorRepository colaboradorRepository)
+        public RetornarListaDeColaboradoresPorSquadUseCase(IColaboradorRepository colaboradorRepository)
         {
             _colaboradorRepository = colaboradorRepository;
         }

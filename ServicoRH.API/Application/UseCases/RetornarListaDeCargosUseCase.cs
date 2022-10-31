@@ -1,14 +1,15 @@
-﻿using ServicoRH.Domain;
-using ServicoRH.Infra;
+﻿using ServicoRH.API.Application.UseCases.Interfaces;
+using ServicoRH.API.Infra.Interface;
+using ServicoRH.Domain;
 
 namespace ServicoRH.Application.UseCases
 {
-    public class RetornarListaDeCargosUseCase
+    public class RetornarListaDeCargosUseCase : IRetornarListaDeCargosUseCase
     {
-        private readonly CargoRepository _cargoRepository;
-        public RetornarListaDeCargosUseCase()
+        private readonly ICargoRepository _cargoRepository;
+        public RetornarListaDeCargosUseCase(ICargoRepository cargoRepository)
         {
-            _cargoRepository = new CargoRepository();
+            _cargoRepository = cargoRepository;
         }
 
         public List<Cargo> ObterListaDeCargos()

@@ -1,4 +1,6 @@
-﻿using ServicoRH.Application.UseCases;
+﻿using ServicoRH.API.Application.UseCases.Interfaces;
+using ServicoRH.API.Infra.Interface;
+using ServicoRH.Application.UseCases;
 using ServicoRH.Application.UseCases.Interfaces;
 using ServicoRH.Infra;
 using ServicoRH.Infra.Interface;
@@ -21,13 +23,17 @@ namespace ServicoRH.DI
             services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
             services.AddScoped<IRetornarDadosDoColaboradorUseCase, RetornarDadosDoColaboradorUseCase>();
             services.AddScoped<IRetornarCargoDoColaboradorUseCase, RetornarCargoDoColaboradorUseCase>();
-            services.AddScoped<IRetonarListaDeColaboradoresPorSquadUseCase, RetonarListaDeColaboradoresPorSquadUseCase>();
+            services.AddScoped<IRetonarListaDeColaboradoresPorSquadUseCase, RetornarListaDeColaboradoresPorSquadUseCase>();
             services.AddScoped<IRetornarListaDeColaboradorPorSalarioUseCase, RetornarListaDeColaboradorPorSalarioUseCase>();
             services.AddScoped<IInserirColaboradorUseCase, InserirColaboradorUseCase>();
             services.AddScoped<IAlterarSalarioColaboradorUseCase, AlterarSalarioColaboradorUseCase>();
             services.AddScoped<IDeletarColaboradorUseCase, DeletarColaboradorUseCase>();
             services.AddScoped<IRetornarSalarioPorCpfUseCase, RetornarSalarioPorCpfUseCase>();
             services.AddScoped<IAlterarSquadUseCase, AlterarSquadUseCase>();
+            services.AddScoped<ICargoRepository, CargoRepository>();
+            services.AddScoped<IInserirCargoUseCase, InserirCargoUseCase>();
+            services.AddScoped<IRetornarListaDeCargosUseCase, RetornarListaDeCargosUseCase>();
+
         }
     }
 }

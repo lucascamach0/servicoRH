@@ -1,9 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
+using ServicoRH.API.Infra.Interface;
 using ServicoRH.Domain;
 
 namespace ServicoRH.Infra
 {
-    public class CargoRepository
+    public class CargoRepository : ICargoRepository
     {
         private readonly MySqlData _mySqlConnection;
         public CargoRepository()

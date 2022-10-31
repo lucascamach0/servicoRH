@@ -1,13 +1,14 @@
-﻿using ServicoRH.Infra;
+﻿using ServicoRH.API.Application.UseCases.Interfaces;
+using ServicoRH.API.Infra.Interface;
 
 namespace ServicoRH.Application.UseCases
 {
-    public class InserirCargoUseCase
+    public class InserirCargoUseCase : IInserirCargoUseCase
     {
-        private readonly CargoRepository _cargoRepository;
-        public InserirCargoUseCase()
+        private readonly ICargoRepository _cargoRepository;
+        public InserirCargoUseCase(ICargoRepository cargoRepository)
         {
-            _cargoRepository = new CargoRepository();
+            _cargoRepository = cargoRepository;
         }
 
         public string InserirCargo(string nomeCargo)

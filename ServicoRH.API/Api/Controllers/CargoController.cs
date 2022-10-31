@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ServicoRH.Application.UseCases;
+using ServicoRH.API.Application.UseCases.Interfaces;
 using ServicoRH.Domain;
 
 namespace ServicoRH.Api.Controllers
@@ -8,13 +8,13 @@ namespace ServicoRH.Api.Controllers
     [Route("cargo")]
     public class CargoController
     {
-        private readonly RetornarListaDeCargosUseCase _retornarListaDeCargosUseCase;
-        private readonly InserirCargoUseCase _inserirCargoUseCase;
+        private readonly IRetornarListaDeCargosUseCase _retornarListaDeCargosUseCase;
+        private readonly IInserirCargoUseCase _inserirCargoUseCase;
 
-        public CargoController()
+        public CargoController(IInserirCargoUseCase inserirCargoUseCase, IRetornarListaDeCargosUseCase retornarListaDeCargos)
         {
-            _retornarListaDeCargosUseCase = new RetornarListaDeCargosUseCase();
-            _inserirCargoUseCase = new InserirCargoUseCase();
+            _retornarListaDeCargosUseCase = retornarListaDeCargos;
+            _inserirCargoUseCase = inserirCargoUseCase;
         }
 
         [HttpGet]
