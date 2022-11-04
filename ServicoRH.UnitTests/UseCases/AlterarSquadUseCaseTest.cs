@@ -35,15 +35,46 @@ namespace ServicoRH.UnitTests.UseCases
         }
 
         [Fact]
-        public void AlterarSquadComSquadNaoEncontrada()
+        public void ColaboradorNaoEncontrado()
         {
+            Colaborador colaborador = new Colaborador();
+
+            _retornarDadosDoColaboradorUseCaseMock.Setup(a => a.ObterDadosDoColaborador(It.IsAny<string>())).Returns(colaborador);
+            _repositoryMock.Setup(a => a.AlterarSquad(It.IsAny<AlterarSquadDTO>())).Returns("Colaborador não encontrado");
+
+            AlterarSquadUseCase useCase = new AlterarSquadUseCase(_repositoryMock.Object, _retornarDadosDoColaboradorUseCaseMock.Object, _retornarListaDeSquadsUseCaseMock.Object);
+
+            var response = useCase.AlterarSquad(new AlterarSquadDTO());
+
+            Assert.Equal("Colaborador não encontrado", response);
 
         }
 
         [Fact]
-        public void ColaboradorNaoEncontrada()
+        public void AlterarSquadComSquadNaoEncontrada()
         {
+            Colaborador colaborador = new Colaborador();
+            colaborador.Cpf = "123";
 
+            _retornarDadosDoColaboradorUseCaseMock.Setup(a => a.ObterDadosDoColaborador(It.IsAny<string>())).Returns(colaborador);
+
+            List<SquadDTO> listaSquadDTO = new List<SquadDTO>();
+            SquadDTO squadDTO = new SquadDTO();
+            squadDTO.Nome = "E2A";
+            squadDTO.IdSquad = 1;
+            listaSquadDTO.Add(squadDTO);
+
+            _retornarListaDeSquadsUseCaseMock.Setup(a => a.ObterListaDeSquads()).Returns(listaSquadDTO);
+
+            AlterarSquadUseCase useCase = new AlterarSquadUseCase(_repositoryMock.Object,
+                _retornarDadosDoColaboradorUseCaseMock.Object,
+                _retornarListaDeSquadsUseCaseMock.Object);
+
+            AlterarSquadDTO alterarSquadDTO = new AlterarSquadDTO();
+            alterarSquadDTO.IdSquad = 2;
+            var response = useCase.AlterarSquad(alterarSquadDTO);
+
+            Assert.Equal("Squad não encontrada", response);
         }
     }
 }
