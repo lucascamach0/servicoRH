@@ -1,4 +1,5 @@
-﻿using ServicoRH.API.Application.UseCases.Interfaces;
+﻿using ServicoRH.API.Application.UseCases;
+using ServicoRH.API.Application.UseCases.Interfaces;
 using ServicoRH.API.Infra.Interface;
 using ServicoRH.Application.UseCases;
 using ServicoRH.Application.UseCases.Interfaces;
@@ -33,6 +34,7 @@ namespace ServicoRH.DI
             services.AddScoped<ICargoRepository, CargoRepository>();
             services.AddScoped<IInserirCargoUseCase, InserirCargoUseCase>();
             services.AddScoped<IRetornarListaDeCargosUseCase, RetornarListaDeCargosUseCase>();
+            services.AddScoped<IRetornarValorDeImpostoPagoUseCase, RetornarValorDeImpostoPagoUseCase>();
 
         }
     }

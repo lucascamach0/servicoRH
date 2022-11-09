@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ServicoRH.API.Application.UseCases.Interfaces;
 using ServicoRH.Application.UseCases.Interfaces;
 using ServicoRH.Domain;
 using ServicoRH.DTO;
@@ -18,6 +19,7 @@ namespace ServicoRH.Api.Controllers
         private readonly IInserirColaboradorUseCase _inserirColaboradorUseCase;
         private readonly IAlterarSalarioColaboradorUseCase _alterarSalarioColaboradorUseCase;
         private readonly IDeletarColaboradorUseCase _deletarColaboradorUseCase;
+        private readonly IRetornarValorDeImpostoPagoUseCase _retornarValorDeImpostoPagoUseCase;
 
         public ColaboradorController(IDeletarColaboradorUseCase deletarColaboradorUseCase,
             IRetornarDadosDoColaboradorUseCase retornarDadosDoColaboradorUseCase,
@@ -27,7 +29,8 @@ namespace ServicoRH.Api.Controllers
             IRetornarListaDeColaboradorPorSalarioUseCase retornarListaDeColaboradorPorSalarioUseCase,
             IInserirColaboradorUseCase inserirColaboradorUseCase,
             IAlterarSalarioColaboradorUseCase alterarSalarioColaboradorUseCase,
-            IRetornarSalarioPorCpfUseCase retornarSalarioPorCpfUseCase)
+            IRetornarSalarioPorCpfUseCase retornarSalarioPorCpfUseCase,
+            IRetornarValorDeImpostoPagoUseCase retornarValorDeImpostoPagoUseCase)
         {
             _retornarSalarioPorCpfUseCase = retornarSalarioPorCpfUseCase;
             _retornarDadosDoColaboradorUseCase = retornarDadosDoColaboradorUseCase;
@@ -38,6 +41,7 @@ namespace ServicoRH.Api.Controllers
             _inserirColaboradorUseCase = inserirColaboradorUseCase;
             _alterarSalarioColaboradorUseCase = alterarSalarioColaboradorUseCase;
             _deletarColaboradorUseCase = deletarColaboradorUseCase;
+            _retornarValorDeImpostoPagoUseCase = retornarValorDeImpostoPagoUseCase;
         }
 
         [HttpGet]
@@ -102,6 +106,13 @@ namespace ServicoRH.Api.Controllers
         public string DeletarColaborador([FromBody] string cpf)
         {
             return _deletarColaboradorUseCase.ExcluirColaborador(cpf);
+        }
+
+        [HttpGet]
+        [Route("RetornarImposto")]
+        public double RetornarValorDoImposto(string cpf)
+        {
+            return _retornarValorDeImpostoPagoUseCase.ObterValorDeImposto(cpf);
         }
     }
 }
